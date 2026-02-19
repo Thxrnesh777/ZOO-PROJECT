@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TWK - 4D Zoo</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+body{
+    background:#111;
+    color:white;
+    transition:0.5s;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    width:100%;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#00ffcc;
+}
+
+.toggle{
+    font-size:24px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.toggle:hover{
+    transform:rotate(180deg);
+}
+
+/* HERO SIMPLE */
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    font-size:40px;
+}
+
+/* 4D CARDS SECTION */
+.animals{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    padding:100px 20px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:280px;
+    height:380px;
+    perspective:1500px;
+}
+
+.card-inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:transform 1s;
+}
+
+.card:hover .card-inner{
+    transform:rotateY(180deg) rotateX(10deg) scale(1.05);
+}
+
+/* Front & Back */
+.card-front, .card-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:25px;
+    overflow:hidden;
+    backface-visibility:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+.card-front img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.card-back{
+    background:linear-gradient(45deg,#00ffcc,#00ffaa);
+    transform:rotateY(180deg);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+    color:black;
+}
+
+/* 4D GLOW EFFECT */
+.card::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:25px;
+    background:linear-gradient(45deg,#00ffcc,#ff00cc);
+    z-index:-1;
+    filter:blur(30px);
+    opacity:0;
+    transition:0.5s;
+}
+
+.card:hover::before{
+    opacity:0.7;
+}
+
+/* LIGHT MODE */
+.light-mode{
+    background:white;
+    color:black;
+}
+
+.light-mode nav{
+    background:rgba(255,255,255,0.7);
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">🦁 TWK</div>
+    <div class="toggle" onclick="toggleMode()">🌙</div>
+</nav>
+
+<section class="hero">
+    4D Wildlife Experience
+</section>
+
+<section class="animals">
+
+<div class="card">
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d">
+        </div>
+        <div class="card-back">
+            Lion - King
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="https://images.unsplash.com/photo-1598755257130-c2aaca1f061c">
+        </div>
+        <div class="card-back">
+            Tiger - Hunter
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2">
+        </div>
+        <div class="card-back">
+            Elephant - Giant
+        </div>
+    </div>
+</div>
+
+</section>
+
+<script>
+function toggleMode(){
+    document.body.classList.toggle("light-mode");
+    let icon = document.querySelector(".toggle");
+    if(document.body.classList.contains("light-mode")){
+        icon.innerHTML = "🌞";
+    } else {
+        icon.innerHTML = "🌙";
+    }
+}
+</script>
+
+</body>
+</html>

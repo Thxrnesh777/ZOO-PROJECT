@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TWK 100000000D Universe</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:black;
+color:white;
+}
+
+/* GALAXY BACKGROUND */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* CENTER PANEL */
+.panel{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:400px;
+padding:40px;
+border-radius:30px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+box-shadow:0 0 60px cyan;
+text-align:center;
+transition:0.3s;
+transform-style:preserve-3d;
+}
+
+.panel h1{
+font-size:28px;
+letter-spacing:2px;
+margin-bottom:20px;
+}
+
+.panel button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,cyan,magenta);
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.panel button:hover{
+transform:scale(1.1);
+box-shadow:0 0 30px magenta;
+}
+
+/* LIGHT FOLLOW EFFECT */
+.light{
+position:fixed;
+width:300px;
+height:300px;
+border-radius:50%;
+pointer-events:none;
+background:radial-gradient(circle, rgba(0,255,255,0.4), transparent 70%);
+mix-blend-mode:screen;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+<div class="light" id="light"></div>
+
+<div class="panel" id="panel">
+<h1>🦁 THARNESH WILDLIFE UNIVERSE</h1>
+<p>Welcome to 100000000D Experience</p>
+<br>
+<button>ENTER THE WILD</button>
+</div>
+
+<script>
+
+/* ================= STAR GALAXY ================= */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = [];
+
+for(let i=0;i<200;i++){
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2,
+speed:Math.random()*1
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+for(let star of stars){
+ctx.beginPath();
+ctx.arc(star.x,star.y,star.size,0,Math.PI*2);
+ctx.fillStyle="white";
+ctx.fill();
+
+star.y += star.speed;
+if(star.y > canvas.height) star.y = 0;
+}
+
+requestAnimationFrame(animate);
+}
+
+animate();
+
+/* ================= MOUSE LIGHT ================= */
+const light = document.getElementById("light");
+
+document.addEventListener("mousemove",(e)=>{
+light.style.left = e.pageX - 150 + "px";
+light.style.top = e.pageY - 150 + "px";
+});
+
+/* ================= 3D PANEL TILT ================= */
+const panel = document.getElementById("panel");
+
+document.addEventListener("mousemove",(e)=>{
+let x = (window.innerWidth/2 - e.pageX)/25;
+let y = (window.innerHeight/2 - e.pageY)/25;
+panel.style.transform =
+`translate(-50%,-50%) rotateY(${x}deg) rotateX(${y}deg)`;
+});
+
+</script>
+
+</body>
+</html>

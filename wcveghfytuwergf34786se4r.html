@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tharnesh Wildlife Kingdom</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#111;
+color:white;
+transition:0.4s;
+}
+
+/* NAVBAR */
+nav{
+position:fixed;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 50px;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+nav h1{
+color:#00ffcc;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:500;
+}
+
+nav ul li a:hover{
+color:#00ffcc;
+}
+
+.toggle{
+cursor:pointer;
+font-size:22px;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+background:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover no-repeat;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h2{
+font-size:50px;
+text-shadow:0 0 20px black;
+}
+
+.hero button{
+margin-top:20px;
+padding:12px 30px;
+border:none;
+background:#00ffcc;
+border-radius:30px;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* PARALLAX */
+.parallax{
+height:300px;
+background:url('https://images.unsplash.com/photo-1546182990-dffeafbe841d') center/cover fixed;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:35px;
+font-weight:bold;
+}
+
+/* SECTION */
+section{
+padding:80px 50px;
+text-align:center;
+}
+
+/* CARDS */
+.cards{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.card{
+width:250px;
+background:#1a1a1a;
+border-radius:20px;
+overflow:hidden;
+transition:0.4s;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card h3{
+padding:15px;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 20px #00ffcc;
+}
+
+/* TICKET */
+.ticket-box{
+background:#1a1a1a;
+padding:30px;
+border-radius:20px;
+display:inline-block;
+}
+
+.ticket-box button{
+margin-top:15px;
+padding:10px 25px;
+border:none;
+background:#00ffcc;
+border-radius:25px;
+cursor:pointer;
+}
+
+/* CONTACT */
+.contact input, .contact textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+}
+
+.contact button{
+padding:10px 25px;
+border:none;
+background:#00ffcc;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+background:black;
+padding:20px;
+text-align:center;
+margin-top:50px;
+}
+
+/* LIGHT MODE */
+.light{
+background:white;
+color:black;
+}
+
+.light nav{
+background:rgba(255,255,255,0.8);
+}
+
+.light .card{
+background:white;
+color:black;
+}
+
+.light .ticket-box{
+background:white;
+color:black;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<h1>🦁 TWK</h1>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#animals">Animals</a></li>
+<li><a href="#tickets">Tickets</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<div class="toggle" onclick="mode()">🌙</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="home">
+<div>
+<h2>Welcome to Tharnesh Wildlife Kingdom</h2>
+<button>Explore Now</button>
+</div>
+</div>
+
+<!-- ABOUT -->
+<section>
+<h2>About Our Zoo</h2>
+<p>Experience wildlife like never before. 500+ animals, 50+ species, VIP safari and eco-friendly habitat.</p>
+</section>
+
+<!-- PARALLAX -->
+<div class="parallax">
+Experience The Wild
+</div>
+
+<!-- ANIMALS -->
+<section id="animals">
+<h2>Our Animals</h2>
+<br>
+<div class="cards">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d">
+<h3>Lion</h3>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1598755257130-c2aaca1f061c">
+<h3>Tiger</h3>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2">
+<h3>Elephant</h3>
+</div>
+</div>
+</section>
+
+<!-- TICKETS -->
+<section id="tickets">
+<h2>Book Tickets</h2>
+<br>
+<div class="ticket-box">
+<p>Entry Fee: ₹200</p>
+<button>Book Now</button>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact Us</h2>
+<div class="contact">
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea rows="4" placeholder="Message"></textarea>
+<button>Send</button>
+</div>
+</section>
+
+<footer>
+© 2026 Tharnesh Wildlife Kingdom | All Rights Reserved
+</footer>
+
+<script>
+function mode(){
+document.body.classList.toggle("light");
+let icon=document.querySelector(".toggle");
+if(document.body.classList.contains("light")){
+icon.innerHTML="🌞";
+}else{
+icon.innerHTML="🌙";
+}
+}
+</script>
+
+</body>
+</html>

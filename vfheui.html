@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Luxury Zoo Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#1f1c2c,#928dab);
+    overflow:hidden;
+}
+
+/* Animated glow background */
+body::before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:linear-gradient(45deg,#00f2ff,#ff00cc);
+    border-radius:50%;
+    filter:blur(200px);
+    animation:rotate 10s linear infinite;
+}
+
+@keyframes rotate{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+.container{
+    position:relative;
+    width:350px;
+    padding:40px;
+    background:rgba(255,255,255,0.08);
+    border-radius:20px;
+    backdrop-filter:blur(20px);
+    box-shadow:0 0 40px rgba(255,0,200,0.6);
+    animation:fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
+}
+
+h2{
+    text-align:center;
+    color:white;
+    margin-bottom:30px;
+    letter-spacing:2px;
+}
+
+.input-box{
+    margin-bottom:20px;
+}
+
+.input-box input{
+    width:100%;
+    padding:12px;
+    background:transparent;
+    border:none;
+    border-bottom:2px solid #ff00cc;
+    color:white;
+    outline:none;
+}
+
+.input-box input:focus{
+    border-bottom:2px solid #00f2ff;
+    transition:0.3s;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff00cc,#00f2ff);
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px #ff00cc;
+}
+
+.link{
+    text-align:center;
+    margin-top:20px;
+    color:white;
+}
+
+.link a{
+    color:#00f2ff;
+    text-decoration:none;
+}
+
+.link a:hover{
+    text-shadow:0 0 10px #00f2ff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🐯 ZOO LOGIN</h2>
+
+    <form action="index.html">
+        <div class="input-box">
+            <input type="email" placeholder="Email" required>
+        </div>
+
+        <div class="input-box">
+            <input type="password" placeholder="Password" required>
+        </div>
+
+        <button type="submit">Enter Zoo</button>
+    </form>
+
+    <div class="link">
+        New Here? <a href="register.html">Create Account</a>
+    </div>
+</div>
+
+</body>
+</html>
